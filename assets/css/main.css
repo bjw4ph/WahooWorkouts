@@ -58,6 +58,17 @@
 
 /* Containers */
 
+	.columncontrol {
+		-webkit-column-rule-style: solid;
+		column-rule: 3px dotted #ddd;
+		column-count: 3;
+	}
+
+	.keeptogether {
+		display: inline-block;
+		width: 100%;
+	}
+
 	.container {
 		margin-left: auto;
 		margin-right: auto;
@@ -2543,5 +2554,7 @@
 				#copyright .links {
 					padding: 0.75em 1.25em 0.75em 1.25em;
 				}
+
+
 
 	}
