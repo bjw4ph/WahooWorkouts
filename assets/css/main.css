@@ -2016,7 +2016,7 @@
 			#banner {
 				position: relative;
 				padding: 8em 0;
-				margin: 4em 0 0 0;
+				margin: 0em 0 0 0;
 			}
 
 				#banner header {
@@ -2474,7 +2474,7 @@
 			}
 
 			#header-wrapper {
-				padding: 1em 0;
+				padding: 0em 0;
 			}
 
 			#footer-wrapper {
