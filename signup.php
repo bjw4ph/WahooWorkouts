@@ -20,53 +20,62 @@
 	<body class="no-sidebar">
 		<div id="page-wrapper">
 
-			<!-- Header -->
-				<div id="header-wrapper">
-					<div id="header">
+			<!-- Header -->		
+			<nav class="navbar navbar-default navbar-fixed-top">
+				  <div class="container-fluid">
+				    
+				    <div class="navbar-header">
+				      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				        <span class="sr-only">Toggle navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				      </button>
+				      <a class="navbar-brand" href="index.html">
+				        <img alt="Brand" src="images/logo.png" style="height:40px; padding-bottom:10px">
+				      </a>
 
-						
-							<nav class="navbar navbar-default navbar-fixed-top">
-								  <div class="container-fluid">
-								    
-								    <div class="navbar-header">
-								      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-								        <span class="sr-only">Toggle navigation</span>
-								        <span class="icon-bar"></span>
-								        <span class="icon-bar"></span>
-								        <span class="icon-bar"></span>
-								      </button>
-								      <a class="navbar-brand" href="#">
-								        <img alt="Brand" src="images/logo.png" style="height:40px; padding-bottom:10px">
-								      </a>
+				      <div class="navbar-brand" href="#" style="font-size:30px; color:black;">Wahoo Workouts</div>
+					  
 
-								      <div class="navbar-brand" href="#" style="font-size:30px; color:black;">Wahoo Workouts</div>
-									  
+				      
+				    </div>
 
-								      
-								    </div>
-
-								    <!-- Collect the nav links, forms, and other content for toggling -->
-								    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-								      
-								      
-								      <ul class="nav navbar-nav navbar-right">
-								        <li class="active"><a href="#">Home</a></li>
-								        <li><a href="aboutus.html">About Us</a></li>
-								        <li><a href="signup.php">Sign Up</a></li>
-								      </ul>
-								    </div><!-- /.navbar-collapse -->
-								  </div><!-- /.container-fluid -->
-								</nav>
-							</div>
-				</div>
+				    <!-- Collect the nav links, forms, and other content for toggling -->
+				    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				      
+				      
+				      <ul class="nav navbar-nav navbar-right">
+				        <li><a href="index.html">Home</a></li>
+				        <li><a href="aboutus.html">About Us</a></li>
+				        <li class="active"><a href="#">Sign Up</a></li>
+				      </ul>
+				    </div><!-- /.navbar-collapse -->
+				  </div><!-- /.container-fluid -->
+				</nav>
+							
 				<div id="main-wrapper">
 					<div class="container">
-						<h1> Login </h1>
-						<div id="responseText">
-						</div>
-						<div id="loginForm">
-							<input type="text" placeholder="First Name" id="firstName"><br><input type="text" placeholder="Last Name" id="lastName"><br><input type="text" placeholder="Email" id="email"><br><input type="text" placeholder="Address" id="address"><br><input type="text" placeholder="City" id="city"><br><input type="text" placeholder="State" id="state"><br><input type="text" placeholder="Zip Code" id="zipcode"><br><input type="submit" value="Create New User" class="button" onclick="createNewUser()">
-						</div>
+						<article class="box post">
+							<header style="text-align:center">
+								<h2>Sign Up</h2>
+								<!-- <p>Lorem ipsum dolor sit amet feugiat</p> -->
+							</header>
+						<section>
+							<div id="responseText">
+							</div>
+							<div id="loginForm" style="text-align:center">
+								
+								<input type="text" placeholder="First Name" id="firstName" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
+								<input type="text" placeholder="Last Name" id="lastName" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
+								<input type="text" placeholder="Email" id="email" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
+								<input type="text" placeholder="Address" id="address" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
+								<input type="text" placeholder="City" id="city" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
+								<input type="text" placeholder="State" id="state" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
+								<input type="text" placeholder="Zip Code" id="zipcode" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
+								<input type="submit" value="Create New User" class="button" onclick="createNewUser()">
+							</div>
+						</section>
 					</div>
 				</div>
 				<div id="footer-wrapper">
@@ -141,10 +150,10 @@
 								</section>
 							</div>
 						</div>
-						<div class="row">
+						<!-- <div class="row">
 							<div class="12u">
 
-								<!-- Copyright -->
+								
 									<div id="copyright">
 										<ul class="links">
 											<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
@@ -152,7 +161,7 @@
 									</div>
 
 							</div>
-						</div>
+						</div> -->
 					</section>
 				</div>
 
@@ -168,77 +177,92 @@
 			var regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 			
 			if(document.getElementById("firstName").value == ""){
-				document.getElementById("responseText").innerHTML = "Please Enter a First Name";
+
+				// document.getElementById("responseText").innerHTML = "<div class=\"alert alert-danger\" role=\"alert\">Please Enter a First Name</div>";
+				alert("Please Enter a First Name")
 				document.getElementById("firstName").focus();
 				return false;
 			}
 			if(!regOnlyLetters.test(document.getElementById("firstName").value)){
-				document.getElementById("responseText").innerHTML = "First Name can only contain english letters";
+				// document.getElementById("responseText").innerHTML = "First Name can only contain english letters";
+				alert("First Name can only contain english letters")
 				document.getElementById("firstName").focus();
 				return false;
 			}
 			if(document.getElementById("lastName").value == ""){
-				document.getElementById("responseText").innerHTML = "Please Enter a Last Name";
+				// document.getElementById("responseText").innerHTML = "Please Enter a Last Name";
+				alert("Please Enter a Last Name")
 				document.getElementById("lastName").focus();
 				return false;
 			}
 
 
 			if(!regOnlyLetters.test(document.getElementById("lastName").value)){
-				document.getElementById("responseText").innerHTML = "Last Name can only contain english letters";
+				// document.getElementById("responseText").innerHTML = "Last Name can only contain english letters";
+				alert("Last Name can only contain english letters")
 				document.getElementById("lastName").focus();
 				return false;
 			}
 
 			if(document.getElementById("email").value == ""){
-				document.getElementById("responseText").innerHTML = "Please Enter an Email";
+				// document.getElementById("responseText").innerHTML = "Please Enter an Email";
+				alert("Please Enter an Email")
 				document.getElementById("email").focus();
 				return false;
 			}
 
 			if(!regEmail.test(document.getElementById("email").value)){
-				document.getElementById("responseText").innerHTML = "Email incorrect";
+				// document.getElementById("responseText").innerHTML = "Email incorrect";
+				alert("Email Incorrect")
 				document.getElementById("email").focus();
 				return false;
 			}
 			if(document.getElementById("address").value == ""){
-				document.getElementById("responseText").innerHTML = "Please Enter an Address";
+				// document.getElementById("responseText").innerHTML = "Please Enter an Address";
+				alert("Please Enter an Address")
 				document.getElementById("address").focus();
 				return false;
 			}
 			if(!regAlphanumeric.test(document.getElementById("address").value)){
-				document.getElementById("responseText").innerHTML = "Address can only contain alphanumeric characters";
+				// document.getElementById("responseText").innerHTML = "Address can only contain alphanumeric characters";
+				alert("Address can only contain alphanumeric characters")
 				document.getElementById("address").focus();
 				return false;
 			}
 			if(document.getElementById("city").value == ""){
-				document.getElementById("responseText").innerHTML = "Please Enter a City";
+				// document.getElementById("responseText").innerHTML = "Please Enter a City";
+				alert("Please Enter a City")
 				document.getElementById("city").focus();
 				return false;
 			}
 			if(!regOnlyLetters.test(document.getElementById("city").value)){
-				document.getElementById("responseText").innerHTML = "City can only contain English letters";
+				// document.getElementById("responseText").innerHTML = "City can only contain English letters";
+				alert("City can only contain English letters")
 				document.getElementById("city").focus();
 				return false;
 			}
 			if(document.getElementById("state").value == ""){
-				document.getElementById("responseText").innerHTML = "Please Enter a State";
+				// document.getElementById("responseText").innerHTML = "Please Enter a State";
+				alert("Please Enter a State")
 				document.getElementById("state").focus();
 				return false;
 			}
 			if(!regOnlyLetters.test(document.getElementById("state").value)){
-				document.getElementById("responseText").innerHTML = "State can only contain English letters";
+				// document.getElementById("responseText").innerHTML = "State can only contain English letters";
+				alert("State can only contain English letters")
 				document.getElementById("state").focus();
 				return false;
 			}
 			if(document.getElementById("zipcode").value == ""){
-				document.getElementById("responseText").innerHTML = "Please Enter a Zip Code";
+				// document.getElementById("responseText").innerHTML = "Please Enter a Zip Code";
+				alert("Please Enter a Zip Code")
 				document.getElementById("zipcode").focus();
 				return false;
 			}
 
 			if(!regNumbers.test(document.getElementById("zipcode").value)){
-				document.getElementById("responseText").innerHTML = "Zip Code only contains five numbers";
+				// document.getElementById("responseText").innerHTML = "Zip Code only contains five numbers";
+				alert("Zip Code only contains five numbers")
 				document.getElementById("zipcode").focus();
 				return false;
 			}
@@ -261,7 +285,17 @@
 	        	},
 	        	function(data){
 	        		var response = $(data).find("value").text();
-	        		document.getElementById("responseText").innerHTML = response;
+	        		alert(response);
+	        		if(response == "Successfully added"){
+	        			document.getElementById("firstName").value = "";
+	        			document.getElementById("lastName").value = "";
+	        			document.getElementById("email").value = "";
+	        			document.getElementById("address").value = "";
+	  					document.getElementById("city").value = "";
+	        			document.getElementById("state").value = "";
+	        			document.getElementById("zipcode").value = "";
+	        		}
+	        		// document.getElementById("responseText").innerHTML = response;
 	        	});
 	       
 
