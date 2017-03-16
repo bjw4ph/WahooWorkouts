@@ -1,9 +1,9 @@
 <?php
 
 	// Load classes needed
-function __autoload($class) {
-     require_once $class . '.php';
-}
+	function __autoload($class) {
+	     require_once $class . '.php';
+	}
 
 	session_start();
 	$name;
@@ -25,7 +25,7 @@ function __autoload($class) {
 	if ($db->connect_error):
 		die ("Could not connect to db: " . $db->connect_error);
 	endif;
-	$query = "select * from siteUser where siteUser.Name='$name'";
+	$query = "select * from siteUser where siteUser.Email='$email'";
 	$queryResult = $db->query($query);
 	if($queryResult->num_rows == 0){
 		$countQuery = "select * from siteUser";
@@ -34,6 +34,35 @@ function __autoload($class) {
 
 		$query3 = "insert into siteUser values ('$counter', '$name', '$email', '$address', '$city', '$state', '$zipcode') ";
 		$db->query($query3) or die("Invalid Insert " .$db->error);
+		
+
+		$mailpath = '/xampp/htdocs/WahooWorkouts/PHPMailer';
+		$path = get_include_path();
+		set_include_path($path . PATH_SEPARATOR . $mailpath);
+		require 'PHPMailerAutoload.php';
+
+		$mail = new PHPMailer();
+		 
+		$mail->IsSMTP(); // telling the class to use SMTP
+		$mail->SMTPAuth = true; // enable SMTP authentication
+		$mail->SMTPSecure = "tls"; // sets tls authentication
+		$mail->Host = "smtp.gmail.com"; // sets GMAIL as the SMTP server; or your email service
+		$mail->Port = 587; // set the SMTP port for GMAIL server; or your email server port
+		$mail->Username = "wahooworkouts@gmail.com"; // email username
+		$mail->Password = "UVACSROCKS"; // email password
+		
+
+		$email = strip_tags($email);
+			  // Put information into the message
+		$mail->SetFrom("wahooworkouts@gmail.com");
+		$mail->Subject = "Thanks for Registering with Wahoo Workouts";
+		$address = strip_tags($email);
+		$mail->addAddress($email, "Person");
+		$mail->Body = "Thank you for registering with Wahoo Workouts! We hope you are able to find the fitness regimen for you";
+		$mail->send();
+
+
+
 		header('Content-type: text/xml');
       	echo "<?xml version='1.0' encoding='utf-8'?>";
       	echo "<Word>";
@@ -46,7 +75,7 @@ function __autoload($class) {
 		header('Content-type: text/xml');
       	echo "<?xml version='1.0' encoding='utf-8'?>";
       	echo "<Word>";
-      	echo "<value>User already exists</value>";
+      	echo "<value>User with that email already exists</value>";
       	echo "</Word>";	
 	}
 
