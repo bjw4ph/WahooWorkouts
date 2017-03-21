@@ -55,7 +55,7 @@
 		$email = strip_tags($email);
 			  // Put information into the message
 		$mail->SetFrom("wahooworkouts@gmail.com");
-		$mail->Subject = "Thanks for Registering with Wahoo Workouts";
+		$mail->Subject = "Wahoo WOrkouts - Succesfully Registered!";
 		$address = strip_tags($email);
 		$mail->addAddress($email, "Person");
 		$mail->Body = "Thank you for registering with Wahoo Workouts! We hope you are able to find the fitness regimen for you";
