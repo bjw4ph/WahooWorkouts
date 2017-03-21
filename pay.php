@@ -58,6 +58,16 @@
     $countryCode= filter_var($json_response['payer']['payer_info']['shipping_address']['country_code'],FILTER_SANITIZE_SPECIAL_CHARS);
 	
     include('header.php');
+
+    #Update Database with Transaction
+    $timeID = $_POST["orderID"];
+    $query = "select * from trainerTimes where siteUser.Email = trainerInfo.Email and siteUser.trainerTime__id = '$id'";
+
+    $db = new mysqli('localhost', 'root', '' , 'WahooWorkouts');
+    if ($db->connect_error):
+        die ("Could not connect to db: " . $db->connect_error);
+    endif;
+    $results = $db->query($query);
 ?>
     <div id="main-wrapper">
         <div class="container">

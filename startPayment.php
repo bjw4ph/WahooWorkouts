@@ -27,7 +27,8 @@
         		$markFlowJson = json_encode($markFlowArray);
         		$approval_url = getApprovalURL($access_token, $markFlowJson). "&useraction=commit";
         	} else { //Express checkout flow
-                        $total = 60 * intval($_POST["hours"]);
+                        $total = intval($_POST["pricing"]) * (intval($_POST["finish"]) - intval($_POST["start"]));
+                        //$total = 60 * intval($_POST["hours"]);
         		$expressCheckoutArray = json_decode($_SESSION['expressCheckoutPaymentData'], true);
         		$expressCheckoutArray['transactions'][0]['amount']['details']['subtotal'] = $total;
         		$expressCheckoutArray['transactions'][0]['item_list']['items'][0]['price'] = $total;
@@ -44,7 +45,20 @@
         		$approval_url = getApprovalURL($access_token, $_SESSION['expressCheckoutPaymentData']);
         	}
 
-        	//redirect user to the Approval URL
+        	if(isset($_COOKIE["orderTrainer"])){
+                        unset($_COOKIE["orderTrainer"]);
+                        unser($_COOKIE["orderID"])
+                        unsert($_COOKIE["orderDate"]);
+                        unset($_COOKIE["orderStart"]);
+                        unset($_COOKIE["orderFinish"]);
+                }
+                setcookie("orderTrainer", $_POST["trainer"]);
+                setcookie("orderDate", $_POST["date"]);
+                setcookie("orderStart", $_POST["start"]);
+                setcookie("orderFinish", $_POST["finish"]);
+                setcookie("orderID", $_POST["id"]);
+
+                //redirect user to the Approval URL
         	header("Location:".$approval_url);
 	}else {
 		 die('Session expired');

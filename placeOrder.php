@@ -31,6 +31,12 @@
                 </header>
                 <section>
             
+                   <h3>Information : </h3>
+                   Trainer: <?php echo($_COOKIE["orderTrainer"]);?> <br>
+                   Date : <?php echo($_COOKIE["orderDate"]);?> <br>
+                   Start : <?php echo($_COOKIE["orderStart"]);?> <br>
+                   Finish : <?php echo($_COOKIE["orderFinish"]);?> <br>
+                   
                    <h3>Recipient :</h3>
                     <?php echo($recipientName);?><br/>
                     

@@ -21,7 +21,7 @@
                         You cancelled the order.
                     </h4>
                     <br/>
-                    Return to <a href="index.php">home page</a>.
+                    Return to <a href="index.html">home page</a>.
                 </section>
             </article>
         </div>
