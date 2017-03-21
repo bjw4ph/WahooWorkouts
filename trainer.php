@@ -1,7 +1,21 @@
+<?php
+    /*
+        * Home Page - has Sample Buyer credentials, Camera (Product) Details and Instructiosn for using the code sample
+    */
+    include('apiCallsData.php');
+    include('paypalConfig.php');
+
+    //setting the environment for Checkout script
+    if(SANDBOX_FLAG) {
+        $environment = SANDBOX_ENV;
+    } else {
+        $environment = LIVE_ENV;
+    }
+?>
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Sign-Up</title>
+		<title>Trainer Info</title>
 			<meta charset="utf-8" />
 			<meta name="viewport" content="width=device-width, initial-scale=1" />
 			<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -47,9 +61,9 @@
 				      
 				      <ul class="nav navbar-nav navbar-right">
 				        <li><a href="index.html">Home</a></li>
-				        <li><a href="trainer.php">Trainers</a></li>
+				        <li class="active"><a href="#">Trainers</a></li>
 				        <li><a href="aboutus.html">About Us</a></li>
-				        <li class="active"><a href="#">Sign Up</a></li>
+				        <li><a href="signup.php">Sign Up</a></li>
 				      </ul>
 				    </div><!-- /.navbar-collapse -->
 				  </div><!-- /.container-fluid -->
@@ -58,86 +72,50 @@
 				<div id="main-wrapper">
 					<div class="container">
 						<article class="box post">
-							<header style="text-align:center">
-								<h2>Sign Up</h2>
+							<header style="text-align:center; padding-bottom:50px">
+								<h2>Florence Joyner</h2>
 								<!-- <p>Lorem ipsum dolor sit amet feugiat</p> -->
 							</header>
 						<section>
+							<div class=row>
+								<div class="6u 12u(mobile)">
+								<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" style="padding-top:25px" /></a>
+								</div>
+								<div class="6u 12u(mobile)">
+									<header>
+										<h3>Information</h3>
+									</header>
+									<p>Come on my cardio journey to learn the way to burn those pesky calories and lose fat while making friends and having a great time</p>
+									<header>
+										<h3>Payment Information</h3>
+									</header>
+									Hourly Rate: $60 <br>
+									<form action="startPayment.php" method="POST">
+										<div>
+										 Hours: <select class="form-control" type="text" name="hours">
+										 	<option value="1">1</option>
+										 	<option value="2">2</option>
+										 	<option value="3">3</option>
+										 	<option value="4">4</option>
+										 	<option value="5">5</option>
+										 </input>
+										 </div>
+						                 <input type="hidden" name="csrf" value="<?php echo($_SESSION['csrf']);?>" hidden readonly/>
+						    
+
+						                <br/>
+						                <!--Container for Checkout with PayPal button-->
+						                <div id="myContainer"></div>
+						                <br/>
+						                
+						            </form>
+
+								</div>
+							</div>
+								
 							<div id="responseText">
 							</div>
-							<div id="loginForm" style="text-align:center">
-								
-									<div style="padding-right:300px">
-										First Name: <br>
-									</div>
-									<input type="text" placeholder="First Name" id="firstName" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
-								
-								<div style="padding-right:300px">Last Name: <br> </div> 
-								<input type="text" placeholder="Last Name" id="lastName" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
-								<div style="padding-right:330px">Email: <br> </div>
-								<input type="text" placeholder="Email" id="email" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
-								<div style="padding-right:325px">Address: <br> </div>
-								<input type="text" placeholder="Address" id="address" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
-								<div style="padding-right:350px">City: <br> </div> 
-								<input type="text" placeholder="City" id="city" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
-								<div style="padding-right:350px">State: <br> </div>
-								<select type="text" placeholder="State" id="state" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px">
-									<option value="AL">Alabama</option>
-									<option value="AK">Alaska</option>
-									<option value="AZ">Arizona</option>
-									<option value="AR">Arkansas</option>
-									<option value="CA">California</option>
-									<option value="CO">Colorado</option>
-									<option value="CT">Connecticut</option>
-									<option value="DE">Delaware</option>
-									<option value="DC">District Of Columbia</option>
-									<option value="FL">Florida</option>
-									<option value="GA">Georgia</option>
-									<option value="HI">Hawaii</option>
-									<option value="ID">Idaho</option>
-									<option value="IL">Illinois</option>
-									<option value="IN">Indiana</option>
-									<option value="IA">Iowa</option>
-									<option value="KS">Kansas</option>
-									<option value="KY">Kentucky</option>
-									<option value="LA">Louisiana</option>
-									<option value="ME">Maine</option>
-									<option value="MD">Maryland</option>
-									<option value="MA">Massachusetts</option>
-									<option value="MI">Michigan</option>
-									<option value="MN">Minnesota</option>
-									<option value="MS">Mississippi</option>
-									<option value="MO">Missouri</option>
-									<option value="MT">Montana</option>
-									<option value="NE">Nebraska</option>
-									<option value="NV">Nevada</option>
-									<option value="NH">New Hampshire</option>
-									<option value="NJ">New Jersey</option>
-									<option value="NM">New Mexico</option>
-									<option value="NY">New York</option>
-									<option value="NC">North Carolina</option>
-									<option value="ND">North Dakota</option>
-									<option value="OH">Ohio</option>
-									<option value="OK">Oklahoma</option>
-									<option value="OR">Oregon</option>
-									<option value="PA">Pennsylvania</option>
-									<option value="RI">Rhode Island</option>
-									<option value="SC">South Carolina</option>
-									<option value="SD">South Dakota</option>
-									<option value="TN">Tennessee</option>
-									<option value="TX">Texas</option>
-									<option value="UT">Utah</option>
-									<option value="VT">Vermont</option>
-									<option value="VA">Virginia</option>
-									<option value="WA">Washington</option>
-									<option value="WV">West Virginia</option>
-									<option value="WI">Wisconsin</option>
-									<option value="WY">Wyoming</option>
-								</select><br>
-								<div style="padding-right:310px">Zip Code: <br> </div>
-								<input type="text" placeholder="Zip Code" id="zipcode" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
-								<input type="submit" value="Create New User" class="button" onclick="createNewUser()">
-							</div>
+							
 						</section>
 					</div>
 				</div>
@@ -377,5 +355,14 @@
 	    }
 		
 	</script>
+	<script type="text/javascript">
+     window.paypalCheckoutReady = function () {
+         paypal.checkout.setup('<?php echo(MERCHANT_ID); ?>', {
+             container: 'myContainer', //{String|HTMLElement|Array} where you want the PayPal button to reside
+             environment: '<?php echo($environment); ?>' //or 'production' depending on your environment
+         });
+     };
+     </script>
+     <script src="//www.paypalobjects.com/api/checkout.js" async></script>
 	</body>
 </html>

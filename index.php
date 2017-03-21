@@ -3,7 +3,6 @@
         * Home Page - has Sample Buyer credentials, Camera (Product) Details and Instructiosn for using the code sample
     */
     include('apiCallsData.php');
-    include('header.php');
     include('paypalConfig.php');
 
     //setting the environment for Checkout script
@@ -21,7 +20,7 @@
 -->
 <html>
 	<head>
-		<title>Dopetrope by HTML5 UP</title>
+		<title>Wahoo Workouts</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -104,7 +103,6 @@
 								      
 								      <ul class="nav navbar-nav navbar-right">
 								        <li class="active"><a href="#">Home</a></li>
-								        <li><a href="trainer.php">Trainers</a></li>
 								        <li><a href="aboutus.html">About Us</a></li>
 								        <li><a href="signup.php">Sign Up</a></li>
 								      </ul>
@@ -176,13 +174,22 @@
 										<div class="row">
 											<div class="4u 12u(mobile)">
 												<section class="box">
-													<a href="trainer.php" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+													<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
 													<header>
 														<h3>Florence Joyner</h3>
 													</header>
 													<p>Come on my cardio journey to learn the way to burn those pesky calories and lose fat while making friends and having a great time</p>
 													<img src="images/5stars.png" style="height:75px"/>
+													<form action="startPayment.php" method="POST">
+										                 <input type="text" name="csrf" value="<?php echo($_SESSION['csrf']);?>" hidden readonly/>
+										    
 
+										                <br/>
+										                <!--Container for Checkout with PayPal button-->
+										                <div id="myContainer"></div>
+										                <br/>
+										                
+										            </form>
 													<!-- <footer>
 														<a href="#" class="button alt">Find out more</a>
 													</footer> -->
@@ -190,7 +197,7 @@
 											</div>
 											<div class="4u 12u(mobile)">
 												<section class="box">
-													<a href="trainer.php" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+													<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
 													<header>
 														<h3>Conor McGregor</h3>
 													</header>
@@ -204,7 +211,7 @@
 											</div>
 											<div class="4u 12u(mobile)">
 												<section class="box">
-													<a href="trainer.php" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+													<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
 													<header>
 														<h3>Sir Charles Barkley</h3>
 													</header>
@@ -308,6 +315,7 @@
 		</div>
 
 		<!-- Scripts -->
+			<script src="assets/js/bootstrap.min.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.dropotron.min.js"></script>
 			<script src="assets/js/skel.min.js"></script>
