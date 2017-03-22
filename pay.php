@@ -2,6 +2,9 @@
     /*
         * Payment Confirmation page : has call to execute the payment and displays the Confirmation details
     */
+    function __autoload($class) {
+         require_once $class . '.php';
+    }
     if (session_id() == "")
         session_start();
 
@@ -60,14 +63,60 @@
     include('header.php');
 
     #Update Database with Transaction
-    $timeID = $_POST["orderID"];
-    $query = "select * from trainerTimes where siteUser.Email = trainerInfo.Email and siteUser.trainerTime__id = '$id'";
+    $timeID = $_COOKIE["orderID"];
+    $query = "select * from trainerTimes where trainerTimes.trainerTimes__id = '$timeID'";
 
     $db = new mysqli('localhost', 'root', '' , 'WahooWorkouts');
     if ($db->connect_error):
         die ("Could not connect to db: " . $db->connect_error);
     endif;
     $results = $db->query($query);
+    $start = $_COOKIE["orderStart"];
+    $finish = $_COOKIE["orderFinish"];
+    $updateTime = $results->fetch_assoc();
+    if($start == $updateTime['Start']){
+        if($finish == $updateTime['Finish']){
+            $oldFinish = $updateTime['Finish'];
+            $query2 = "UPDATE trainerTimes SET trainerTimes.Start = '$oldFinish' WHERE trainerTimes.trainerTimes__id = '$timeID' ";
+            $db->query($query2);
+        } else {
+            $query2 = "UPDATE trainerTimes SET trainerTimes.Start = '$finish' WHERE trainerTimes.trainerTimes__id = '$timeID' ";
+            $db->query($query2);
+        }
+    } else {
+        if($finish == $updateTime['Finish']){
+            $query2 = "UPDATE trainerTimes SET trainerTimes.Finish = '$start' WHERE trainerTimes.trainerTimes__id = '$timeID' ";
+            $db->query($query2);
+        } else {
+            $time = $updateTime['Date'];
+            $query2 = "select * from trainerTimes where trainerTimes.Date = '$time'";
+            $results2 = $db->query($query);
+            $query3 = "select * from trainerTimes";
+            $countResults = $db->query($query3);
+            $counter = $countResults->num_rows+1;
+            $newPartition = $updateTime['Block']+1;
+            $email = $updateTime['Email'];
+            $date = $updateTime['Date'];
+            $oldStart = $updateTime['Start'];
+            $oldFinish = $updateTime['Finish'];
+            $query4 = "insert into trainerTimes values ('$counter', '$email', '$date', '$finish', '$oldFinish', '$newPartition')";
+            $db->query($query4);
+            $query5 = "UPDATE trainerTimes SET trainerTimes.Finish = '$start' WHERE trainerTimes.trainerTimes__id = '$timeID' ";
+            $db->query($query5);
+            if($updateTime['Block'] != $results2->num_rows){
+                while($row = $results2->fetch_assoc()){
+                    if($updateTime['Block'] < $row['Block']){
+                        $rowID = $row['trainerTimes__id'];
+                        $newPartition = $row['Block'] + 1;
+                        $query6 ="UPDATE trainerTimes SET trainerTimes.Block = '$newPartition' WHERE trainerTimes.trainerTimes__id = '$rowID' "; 
+                    }
+                }
+            }
+
+        }
+
+    }
+
 ?>
     <div id="main-wrapper">
         <div class="container">
@@ -95,6 +144,32 @@
     </div>
     
 <?php
+    $mailpath = '/xampp/htdocs/WahooWorkouts/PHPMailer';
+    $path = get_include_path();
+    set_include_path($path . PATH_SEPARATOR . $mailpath);
+    require 'PHPMailerAutoload.php';
+
+    $mail = new PHPMailer();
+     
+    $mail->IsSMTP(); // telling the class to use SMTP
+    $mail->SMTPAuth = true; // enable SMTP authentication
+    $mail->SMTPSecure = "tls"; // sets tls authentication
+    $mail->Host = "smtp.gmail.com"; // sets GMAIL as the SMTP server; or your email service
+    $mail->Port = 587; // set the SMTP port for GMAIL server; or your email server port
+    $mail->Username = "wahooworkouts@gmail.com"; // email username
+    $mail->Password = "UVACSROCKS"; // email password
+    
+    $email = $_COOKIE("signupEmail");
+    $email = str_replace("%40", "@", $email);
+    
+    $email = strip_tags($email);
+          // Put information into the message
+    $mail->SetFrom("wahooworkouts@gmail.com");
+    $mail->Subject = "Wahoo WOrkouts - Thank You For Your Purchase!";
+    $address = strip_tags($email);
+    $mail->addAddress($email, "Person");
+    $mail->Body = "Thank you for your purchase! Your order information is: <br> Trainer: ".$_COOKIE["orderTrainer"]."<br> Date: ".$_COOKIE["orderDate"]."<br> Start: ".$_COOKIE["orderStart"]."<br> Finish: ".$_COOKIE["orderFinish"]."<br>Thanks!";
+    $mail->send();
     if (session_id() !== "") {
                session_unset();
                session_destroy();

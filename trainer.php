@@ -194,6 +194,7 @@
 						                 <input type="hidden" name="pricing" value="<?php echo($trainer["Pricing"]);?>" hidden readonly/>
 						                 <input type="hidden" name="trainer" value="<?php echo($trainer["Name"]); ?>" hidden readonly/>
 						                 <input type="hidden" name="id" value="1" id="idSelect" hidden readonly/>
+						                 <input type="hidden" name="partition" value="1" id="partitionSelect" hidden readonly/>
 						    
 
 						                <br/>
@@ -320,6 +321,7 @@
 			var finish = timesArray[counter]['Finish'];
 			document.getElementById("idSelect").value = timesArray[counter]['trainerTimes__id'];
 			console.log("Id: ", document.getElementById("idSelect").value);
+			document.getElementById("partitionSelect").value = timesArray[counter]['Partition'];
 			
 			optionString = ""
 			for (var j=start; j <= finish; j++){

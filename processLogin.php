@@ -21,6 +21,11 @@
 		$zipcode = $_POST["zipcode"];
 	}
 
+	if(isset($_COOKIE["signupEmail"])){
+		unset($_COOKIE["signupEmail"]);
+	}
+	setcookie("signupEmail", $email);
+
 	$db = new mysqli('localhost', 'root', '' , 'WahooWorkouts');
 	if ($db->connect_error):
 		die ("Could not connect to db: " . $db->connect_error);

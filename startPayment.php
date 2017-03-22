@@ -47,16 +47,18 @@
 
         	if(isset($_COOKIE["orderTrainer"])){
                         unset($_COOKIE["orderTrainer"]);
-                        unser($_COOKIE["orderID"])
-                        unsert($_COOKIE["orderDate"]);
+                        unset($_COOKIE["orderID"]);
+                        unset($_COOKIE["orderDate"]);
                         unset($_COOKIE["orderStart"]);
                         unset($_COOKIE["orderFinish"]);
+                        unset($_COOKIE["orderPartition"]);
                 }
                 setcookie("orderTrainer", $_POST["trainer"]);
                 setcookie("orderDate", $_POST["date"]);
                 setcookie("orderStart", $_POST["start"]);
                 setcookie("orderFinish", $_POST["finish"]);
                 setcookie("orderID", $_POST["id"]);
+                setcookie("orderPartition", $_POST["partition"]);
 
                 //redirect user to the Approval URL
         	header("Location:".$approval_url);
