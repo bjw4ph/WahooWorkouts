@@ -159,16 +159,21 @@
     $mail->Username = "wahooworkouts@gmail.com"; // email username
     $mail->Password = "UVACSROCKS"; // email password
     
-    $email = $_COOKIE("signupEmail");
-    $email = str_replace("%40", "@", $email);
-    
+    $email = $_COOKIE["signupEmail"];
+    echo($email);
+    // $email = str_replace("%40", "@", $email);
+    // echo($email);
     $email = strip_tags($email);
           // Put information into the message
     $mail->SetFrom("wahooworkouts@gmail.com");
     $mail->Subject = "Wahoo WOrkouts - Thank You For Your Purchase!";
     $address = strip_tags($email);
     $mail->addAddress($email, "Person");
-    $mail->Body = "Thank you for your purchase! Your order information is: <br> Trainer: ".$_COOKIE["orderTrainer"]."<br> Date: ".$_COOKIE["orderDate"]."<br> Start: ".$_COOKIE["orderStart"]."<br> Finish: ".$_COOKIE["orderFinish"]."<br>Thanks!";
+    $mail->Body = "Thank you for your purchase! Your order information is: 
+    Trainer: ".$_COOKIE["orderTrainer"]."
+    Date: ".$_COOKIE["orderDate"]."
+    Start: ".$_COOKIE["orderStart"]."
+    Finish: ".$_COOKIE["orderFinish"];
     $mail->send();
     if (session_id() !== "") {
                session_unset();
