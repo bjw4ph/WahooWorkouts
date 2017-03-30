@@ -16,7 +16,15 @@ $(document).ready(function(){
     //     $("#nav5").html("Logout")
     //     $("#nav5").attr("href", "/logout")
     // } 
-    if (pathname.indexOf("/index") >= 0){
+
+    if($("#loginEmail").data("auth") == "yes"){
+        console.log("if statement")
+        $("#nav5").html("Logout")
+        $("#nav5").attr("href", "logout.php")
+        $("#nav1").attr("href", "memberHome.php")
+    } 
+
+    if (pathname.indexOf("/index") >= 0 || pathname.indexOf("/memberHome") >= 0){
         $("#theBody").addClass("homepage")
         $("#nav1").parent().addClass("active");
     }

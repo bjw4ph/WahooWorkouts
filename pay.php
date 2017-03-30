@@ -125,7 +125,7 @@
                     <h2>Order Complete</h2>
                     <!-- <p>Lorem ipsum dolor sit amet feugiat</p> -->
                 </header>
-                <section>
+                <section style="text-align:center">
             
                     <h4>
                         <?php echo($payerFirstName.' '.$payerLastName.', Thank you for your Order!');?><br/><br/>
@@ -136,7 +136,7 @@
                         Total Amount: <?php echo($finalAmount);?> &nbsp;  <?php echo($currency);?> <br/>
                     </h4>
                     <br/>
-                    Return to <a href="index.html">home page</a>.
+                    Return to <a href="index.php">home page</a>.
                 </section>
             </article>
         </div>

@@ -29,7 +29,7 @@
                     <h2>Confirm Order</h2>
                     <!-- <p>Lorem ipsum dolor sit amet feugiat</p> -->
                 </header>
-                <section>
+                <section style="text-align:center">
             
                    <h3>Information : </h3>
                    Trainer: <?php echo($_COOKIE["orderTrainer"]);?> <br>

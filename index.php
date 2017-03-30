@@ -4,6 +4,7 @@
 
 				<div id="header-wrapper">
                     <div id="header">
+                    <?php include('messaging.php') ?>
 						<!-- Banner -->
 							<section id="banner">
 								<header>

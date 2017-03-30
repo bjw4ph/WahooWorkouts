@@ -1,4 +1,11 @@
 <?php
+	if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    }
+    if(!isset($_SESSION["email"])){
+        header("Location: login.php?error=needLogin&next=trainer.php");
+    }
     /*
         * Home Page - has Sample Buyer credentials, Camera (Product) Details and Instructiosn for using the code sample
     */
@@ -40,6 +47,7 @@
 							
 				<div id="main-wrapper">
 					<div class="container">
+					<?php include('messaging.php') ?>
 						<article class="box post">
 							<header style="text-align:center; padding-bottom:50px">
 								<h2><?php echo($trainer["Name"]); ?></h2>

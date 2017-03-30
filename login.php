@@ -1,9 +1,17 @@
 <?php
+	$next;
+	if(isset($_GET["next"])){
+		$next = $_GET["next"];
+	} else {
+		$next = "memberHome.php";
+	}
 	include('header.php')
 ?>
 							
 				<div id="main-wrapper">
 					<div class="container">
+
+					<?php include('messaging.php') ?>
 						<article class="box post">
 							<header style="text-align:center">
 								<h2>Login</h2>
@@ -53,7 +61,7 @@
 				document.getElementById("password").focus();
 				return false;
 			}
-
+			var next2 = "<?php echo($next); ?>";
 
 			// var httpRequest;
 	        var email2 = document.getElementById("email").value;
@@ -65,9 +73,8 @@
 	        	},
 	        	function(data){
 	        		var response = $(data).find("value").text();
-	        		alert(response);
 	        		if(response == "Successful Login"){
-	        			window.location.href = 'index.php';
+	        			window.location.href = next2 + "?success=login";
 	        			return false;
 	        			document.getElementById("email").value = "";
 	        			document.getElementById("password").value = "";

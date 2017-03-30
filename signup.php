@@ -4,6 +4,7 @@
 							
 				<div id="main-wrapper">
 					<div class="container">
+						<?php include('messaging.php') ?>
 						<article class="box post">
 							<header style="text-align:center">
 								<h2>Sign Up</h2>

@@ -1,3 +1,13 @@
+<?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+    $loggedIn = false;
+    if(isset($_SESSION["email"])){
+        $loggedIn = true;
+    }
+?>
 <!DOCTYPE HTML>
 <!--
     Dopetrope by HTML5 UP
@@ -24,6 +34,13 @@
         <script src="projectSetup.js"></script>
     </head>
     <body id="theBody">
+        <?php
+            if($loggedIn){
+                echo "<div id='loginEmail' data-auth='yes'></div>";
+            } else {
+                echo "<div id='loginEmail' data-auth='no'></div>";
+            }
+        ?>
         <div id="page-wrapper">
             <nav class="navbar navbar-default navbar-fixed-top">
               <div class="container-fluid">
@@ -59,4 +76,7 @@
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->
             </nav>
+            
+
+
 

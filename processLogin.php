@@ -5,7 +5,10 @@
 	     require_once $class . '.php';
 	}
 
-	session_start();
+	if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 	$email;
 	$password;
 	if(isset($_POST["email"])){
@@ -28,9 +31,8 @@
       	echo "<value>Invalid Login Credentials</value>";
       	echo "</Word>";	
 
-	
 	} else {
-	
+		$_SESSION["email"] = $email;
 		header('Content-type: text/xml');
       	echo "<?xml version='1.0' encoding='utf-8'?>";
       	echo "<Word>";
