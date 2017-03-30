@@ -1,17 +1,5 @@
 <?php
-    /*
-        * Home Page - has Sample Buyer credentials, Camera (Product) Details and Instructiosn for using the code sample
-    */
-    include('apiCallsData.php');
-    include('header.php');
-    include('paypalConfig.php');
-
-    //setting the environment for Checkout script
-    if(SANDBOX_FLAG) {
-        $environment = SANDBOX_ENV;
-    } else {
-        $environment = LIVE_ENV;
-    }
+    
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -44,43 +32,9 @@
 				<div id="header-wrapper">
 					<div id="header">
 
-						<!-- Logo -->
-							<!-- <h1 style="text-align: center"><img src="images/logo.png" style="height:135px; padding-bottom:10px"/><a href="index.html"><div>Wahoo Workouts</div></a></h1> -->
-							<!-- <h1 style="text-align: center; align:center;"><table style="width:1%; white-space:nowrap; margin-left: auto; margin-right: auto;"><tr><td style="vertical-align:middle;"><img src="images/logo.png" style="height:100px"/></td><td style="vertical-align:middle;"><a href="index.html">Wahoo Workouts</a></td></tr></table></h1 -->
-
-
-						<!-- Nav -->
-							<!-- <nav id="nav" style="align:right">
-								<ul>
-									<li class="current"><a href="index.html">Home</a></li>
-									<li>
-										<a href="#">Dropdown</a>
-										<ul>
-											<li><a href="#">Lorem ipsum dolor</a></li>
-											<li><a href="#">Magna phasellus</a></li>
-											<li><a href="#">Etiam dolore nisl</a></li>
-											<li>
-												<a href="#">Phasellus consequat</a>
-												<ul>
-													<li><a href="#">Magna phasellus</a></li>
-													<li><a href="#">Etiam dolore nisl</a></li>
-													<li><a href="#">Veroeros feugiat</a></li>
-													<li><a href="#">Nisl sed aliquam</a></li>
-													<li><a href="#">Dolore adipiscing</a></li>
-												</ul>
-											</li>
-											<li><a href="#">Veroeros feugiat</a></li>
-										</ul>
-									</li>
-									<li><a href="left-sidebar.html">Left Sidebar</a></li>
-									<li><a href="right-sidebar.html">Right Sidebar</a></li>
-									<li><a href="aboutus.html">About Us</a></li>
-									<li><a href="index.html">Sign Up Now</a></li>
-								</ul>
-							</nav> -->
+						
 							<nav class="navbar navbar-default navbar-fixed-top">
 								  <div class="container-fluid">
-								    <!-- Brand and toggle get grouped for better mobile display -->
 								    <div class="navbar-header">
 								      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 								        <span class="sr-only">Toggle navigation</span>
@@ -93,12 +47,9 @@
 								      </a>
 
 								      <div class="navbar-brand" href="#" style="font-size:30px; color:black;">Wahoo Workouts</div>
-									  
-
-								      <!-- <a class="navbar-brand" href="/"><table style="width:1%; white-space:nowrap; margin-left: auto; margin-right: auto;"><tr><td style="vertical-align:middle;"><img src="images/logo.png" style="height:50px"/></td><td style="vertical-align:middle;"><a href="index.html">Wahoo Workouts</a></td></tr></table></a> -->
+						
 								    </div>
 
-								    <!-- Collect the nav links, forms, and other content for toggling -->
 								    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 								      
 								      

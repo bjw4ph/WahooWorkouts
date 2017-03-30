@@ -11,19 +11,19 @@
         <title>Wahoo Workouts</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        
+        
+        <link href="assets/css/bootstrap.css" rel="stylesheet">
+        <link href="assets/css/bootstrap-theme.css" rel="stylesheet">
 
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="assets/js/bootstrap.js"></script>
         <link rel="stylesheet" href="assets/css/main.css" />
         <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
         <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script src="projectSetup.js"></script>
     </head>
-    <body class="no-sidebar">
+    <body id="theBody">
         <div id="page-wrapper">
             <nav class="navbar navbar-default navbar-fixed-top">
               <div class="container-fluid">
@@ -50,10 +50,11 @@
                   
                   
                   <ul class="nav navbar-nav navbar-right">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="trainer.php">Trainers</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="signup.php">Sign Up</a></li>
+                    <li><a href="index.php" id="nav1">Home</a></li>
+                    <li><a href="trainer.php" id="nav2">Trainers</a></li>
+                    <li><a href="aboutus.php" id="nav3">About Us</a></li>
+                    <li><a href="signup.php" id="nav4">Sign Up</a></li>
+                    <li><a href="login.php" id="nav5">Login</a></li>
                   </ul>
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->
