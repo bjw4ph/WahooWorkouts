@@ -22,6 +22,8 @@
                     
                 </article>
 
+                <input type="submit" value="Delete Account" class="button">
+
         </div>
     </div>
             
