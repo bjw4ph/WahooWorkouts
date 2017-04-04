@@ -11,6 +11,9 @@ if(isset($_GET["success"])){
     else if($_GET["success"] == 'logout'){
         echo "Successfullly Logged Out";
     }
+    else if($_GET["success"] == 'deleteTime'){
+        echo "Appointment Successfully Deleted";
+    }
     else {
         echo "Operation Successful";
     }
