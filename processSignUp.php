@@ -5,7 +5,10 @@
 	     require_once $class . '.php';
 	}
 
-	session_start();
+	if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
 	$name;
 	$email;
 	$address; 

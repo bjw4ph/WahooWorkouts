@@ -1,10 +1,19 @@
 <?php
-
+$email;
 if (session_id() !== "") {
-       session_unset();
-       session_destroy();
+      #session_start();
+      if(isset($_SESSION['email'])){
+        $email = $_SESSION['email'];
+      } else {
+        $email = false;
+      }
+      session_unset();
+      session_destroy();
     }
     session_start();
+    if($email){
+      $_SESSION['email'] = $email;
+    }
     $_SESSION['csrf'] = bin2hex(openssl_random_pseudo_bytes(32));
 /*
     * Data for REST API calls.

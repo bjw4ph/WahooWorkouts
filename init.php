@@ -14,12 +14,14 @@
 		$db->query("drop table siteUser");
 		$db->query("drop table trainerInfo");
 		$db->query("drop table trainerTimes");
+		$db->query("drop table userTimes");
 		
 
 		#Create the tables with the necessary fields
 		$result = $db->query("create table siteUser (siteUser__id int primary key not null, Name char(30) not null, Email char(60) not null, Address char(30) not null, City char(30) not null, State char(30) not null, ZipCode char(30) not null, Password char(30) not null)") or die ("Invalid: " . $db->error);
 		$result = $db->query("create table trainerInfo (Email char(60) primary key not null, Info text(300) not null, Pricing int not null)") or die ("Invalid: " . $db->error);
 		$result = $db->query("create table trainerTimes (trainerTimes__id int primary key not null, Email char(100) not null, Date char(100) not null, Start char(30) not null, Finish char(30) not null, Block char(30) not null)") or die ("Invalid: " . $db->error);
+		$result = $db->query("create table userTimes (userTimes__id int primary key not null, Email char(100) not null, Trainer char(100) not null, Date char(100) not null, Start char(30) not null, Finish char(30) not null)") or die ("Invalid: " . $db->error);
 
 		$trainers = file("trainer.txt");
 		$counter = 0;
@@ -30,9 +32,11 @@
 			#Upate a counter for the id for the Ticket
 			$counter++;
 			$query1 = "insert into siteUser values ('$counter', '$trainer[0]', '$trainer[1]', '$trainer[2]', '$trainer[3]', '$trainer[4]', '$trainer[5]', 'password')";
-			$query2 = "insert into trainerInfo values ('$trainer[1]', '$trainer[6]', '$trainer[7]')";
+			if (isset($trainer[6])){
+				$query2 = "insert into trainerInfo values ('$trainer[1]', '$trainer[6]', '$trainer[7]')";
+				$db->query($query2) or die("Invalid Insert " .$db->error); 
+			}
 			$db->query($query1) or die("Invalid Insert " .$db->error); 
-			$db->query($query2) or die("Invalid Insert " .$db->error); 
 		}
 
 		$times =  file("trainerTimes.txt");
@@ -43,12 +47,16 @@
 			$counter++;
 			$start = intval($time[2]);
 			$finish = intval($time[3]);
-			// echo($time[0] ."<br>");
-			// echo($time[1]."<br>");
-			// echo($start."<br>");
-			// echo($finish."<br>");
-			#Save a hash of the password in the text file for security
 			$query3 = "insert into trainerTimes values ('$counter', '$time[0]', '$time[1]', '$time[2]', '$time[3]', '1')";
+			$db->query($query3) or die("Invalid Insert " .$db->error); 
+		}
+		$times =  file("userTimes.txt");
+		$counter = 0;
+		foreach($times as $timestring){
+			$timestring = rtrim($timestring);
+			$time = explode("$", $timestring);
+			$counter++;
+			$query3 = "insert into userTimes values ('$counter', '$time[0]', '$time[1]', '$time[2]', '$time[3]', '$time[4]')";
 			$db->query($query3) or die("Invalid Insert " .$db->error); 
 		}
 
