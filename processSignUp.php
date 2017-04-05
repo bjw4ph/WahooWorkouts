@@ -16,6 +16,7 @@
 	$state;
 	$zipcode;
 	$password;
+	$type;
 	if(isset($_POST["name"])){
 		$name = $_POST["name"];
 		$email = $_POST["email"];
@@ -24,6 +25,7 @@
 		$state = $_POST["state"];
 		$zipcode = $_POST["zipcode"];
 		$password = $_POST["password"];
+		$type = $_POST["type"];
 	}
 
 	if(isset($_COOKIE["signupEmail"])){
@@ -42,7 +44,7 @@
 		$countResult = $db->query($countQuery);
 		$counter = $countResult->num_rows +1;
 
-		$query3 = "insert into siteUser values ('$counter', '$name', '$email', '$address', '$city', '$state', '$zipcode', '$password') ";
+		$query3 = "insert into siteUser values ('$counter', '$name', '$email', '$address', '$city', '$state', '$zipcode', '$password', '$type') ";
 		$db->query($query3) or die("Invalid Insert " .$db->error);
 		
 

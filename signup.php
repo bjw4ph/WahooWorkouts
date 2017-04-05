@@ -86,6 +86,10 @@
 								<input type="text" placeholder="Zip Code" id="zipcode" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
 								<div style="padding-right:310px">Password: <br> </div>
 								<input type="password" placeholder="Password" id="password" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px"><br>
+								<select type="text" placeholder="State" id="type" style="border-radius:5px; width: 400px; height: 50px; padding-left:10px; margin-bottom:15px">
+									<option value="user">User</option>
+									<option value="trainer">Trainer</option>
+								</select><br>
 								<input type="submit" value="Create New User" class="button" onclick="createNewUser()">
 							</div>
 						</section>
@@ -207,6 +211,7 @@
 	        var state2 = document.getElementById("state").value;
 	        var zipcode2 = document.getElementById("zipcode").value;
 	        var password2 = document.getElementById("password").value;
+	        var type2 = document.getElementById("type").value;
 	        $.post("processSignUp.php",
 	        	{
 	        		name: name2,
@@ -216,6 +221,7 @@
 	        		state: state2,
 	        		zipcode: zipcode2,
 	        		password: password2,
+	        		type: type2
 	        	},
 	        	function(data){
 	        		var response = $(data).find("value").text();

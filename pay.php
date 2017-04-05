@@ -7,7 +7,7 @@
     }
     if (session_id() == "")
         session_start();
-
+    $userEmail = $_SESSION["email"];
     include('utilFunctions.php');
     include('paypalFunctions.php');
 
@@ -116,6 +116,13 @@
         }
 
     }
+    $query3 = "select * from userTimes";
+    $countResults = $db->query($query3);
+    $counter = $countResults->num_rows+1;
+    $email = $updateTime['Email'];
+    $date = $updateTime['Date'];
+    $queryUser = "insert into userTimes values ('$counter', '$userEmail','$email', '$date', '$start', '$finish')";
+    $db->query($queryUser)
 
 ?>
     <div id="main-wrapper">
@@ -163,7 +170,7 @@
     echo($email);
     // $email = str_replace("%40", "@", $email);
     // echo($email);
-    $email = strip_tags($email);
+    $email = strip_tags($userEmail);
           // Put information into the message
     $mail->SetFrom("wahooworkouts@gmail.com");
     $mail->Subject = "Wahoo WOrkouts - Thank You For Your Purchase!";
@@ -175,10 +182,20 @@
     Start: ".$_COOKIE["orderStart"]."
     Finish: ".$_COOKIE["orderFinish"];
     $mail->send();
+    $email;
     if (session_id() !== "") {
+            if(isset($_SESSION['email'])){
+                $email = $_SESSION['email'];
+            } else {
+                $email = false;
+            }
                session_unset();
                session_destroy();
             }
+    session_start();
+    if($email){
+      $_SESSION['email'] = $email;
+    }
     include('footer.php');
 ?>
 
