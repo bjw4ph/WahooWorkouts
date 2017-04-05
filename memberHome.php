@@ -45,7 +45,7 @@
             <!-- Content -->
                 <article class="box post">
                     <header style="text-align:center">
-                        <h2> Welcome, <?php echo($user['Name']); ?></h2>
+                        <h2> Welcome, <?php echo($user['Name']); ?>! </h2>
                         <!-- <p>Lorem ipsum dolor sit amet feugiat</p> -->
                     </header>
 

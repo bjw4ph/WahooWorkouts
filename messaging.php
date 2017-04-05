@@ -9,10 +9,13 @@ if(isset($_GET["success"])){
         echo "Successfully Logged In";
     }
     else if($_GET["success"] == 'logout'){
-        echo "Successfullly Logged Out";
+        echo "Successfully Logged Out";
     }
     else if($_GET["success"] == 'deleteTime'){
         echo "Appointment Successfully Deleted";
+    }
+    else if($_GET["success"] == 'deleteAccount'){
+        echo "Account Successfully Deleted";
     }
     else {
         echo "Operation Successful";
