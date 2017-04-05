@@ -47,6 +47,7 @@
 		$query3 = "insert into siteUser values ('$counter', '$name', '$email', '$address', '$city', '$state', '$zipcode', '$password', '$type') ";
 		$db->query($query3) or die("Invalid Insert " .$db->error);
 		
+		$_SESSION["email"] = $email;
 
 		$mailpath = '/xampp/htdocs/WahooWorkouts/PHPMailer';
 		$path = get_include_path();

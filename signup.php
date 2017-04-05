@@ -227,7 +227,7 @@
 	        		var response = $(data).find("value").text();
 	        		alert(response);
 	        		if(response == "Successfully added"){
-	        			window.location.href = 'login.php';
+	        			window.location.href = 'memberHome.php?success=signup';
 	        			return false;
 	        			document.getElementById("firstName").value = "";
 	        			document.getElementById("lastName").value = "";
