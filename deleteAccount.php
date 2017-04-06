@@ -9,6 +9,11 @@
     { 
         session_start(); 
     } 
+    if(!isset($_SESSION["email"])){
+    	header("Location: index.php?error=cantDelete");
+    }
+
+    $email = $_SESSION["email"];
 
 	$db = new mysqli('localhost', 'root', '' , 'WahooWorkouts');
 	if ($db->connect_error):
@@ -18,7 +23,9 @@
 	$query = "DELETE from siteUser where siteUser.Email= '$email'";
 	$queryResult = $db->query($query);
 
-	if($queryResult) {
+	session_unset();
+    session_destroy();
 
-	}
 	header("Location: index.php?success=deleteAccount");
+
+?>

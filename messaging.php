@@ -17,6 +17,9 @@ if(isset($_GET["success"])){
     else if($_GET["success"] == 'deleteAccount'){
         echo "Account Successfully Deleted";
     }
+    else if($_GET["success"] == 'addTime'){
+        echo "Appointment Time Successfully Added";
+    }
     else {
         echo "Operation Successful";
     }

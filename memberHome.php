@@ -52,13 +52,13 @@
                     <section>
                         <?php
                             if($isTrainer){
-                                echo "You are a Trainer";
                                 echo "<header><h3>Your Open Times</h3></header>";
                                 echo "<table class=\"table\"><thead><tr><th>Date</th><th>Start</th><th>Finish</th><th>Remove Appointment</th></tr></thead><tbody>";
                                 for($i =0; $i < sizeof($openTimes); $i++){
                                     echo "<tr><td>".$openTimes[$i]["Date"]."</td><td>".$openTimes[$i]["Start"]."</td><td>".$openTimes[$i]["Finish"]."</td><td><a href=\"deleteTime.php?id=".$openTimes[$i]["trainerTimes__id"]."&type=Trainer\" class=\"button alt\">Delete</a></td></tr>";
                                 }
                                 echo "</tbody></table>";
+                                echo "<a href='createTime.php' class='button'>Create New Time</a><br>";
                                 echo "<header><h3>Your Scheduled Appointments</h3></header>";
                                 echo "<table class=\"table\"><thead><tr><th>User Email</th><th>Date</th><th>Start</th><th>Finish</th><th>Remove Appointment</th></tr></thead><tbody>";
                                 for($i =0; $i < sizeof($scheduledTimes); $i++){
@@ -75,11 +75,11 @@
                                 echo "</tbody></table>";
                             }
                         ?>
+                    <a href="deleteAccount.php" class="button alt">Delete Account</a>
                     </section>
                     
                 </article>
-
-                <input type="submit" value="Delete Account" class="button">
+                
 
         </div>
     </div>

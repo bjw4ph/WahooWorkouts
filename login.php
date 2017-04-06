@@ -78,6 +78,8 @@
 	        			return false;
 	        			document.getElementById("email").value = "";
 	        			document.getElementById("password").value = "";
+	        		} else {
+	        			alert(response);
 	        		}
 	        		// document.getElementById("responseText").innerHTML = response;
 	        	});
